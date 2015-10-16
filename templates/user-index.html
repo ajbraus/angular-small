@@ -1,0 +1,42 @@
+<h1>People</h1>
+
+<form ng-submit="addUser()">
+	<div class='form-group'>
+		<label for="">Name</label>
+		<input type="text" class="form-control" ng-model="newUser.firstname">				
+	</div>
+	<div class='form-group'>
+		<label for="">Age</label>
+		<input type="text" class="form-control" ng-model="newUser.age">
+	</div>
+	<button type="submit" class="btn btn-primary">Add Person</button>
+</form>
+
+<h2>Adults</h2>
+<ul>
+	<li ng-repeat="user in users"
+			ng-show="user.age > 18">
+			<a ui-sref="user-show({user_id: user.id})">{{user.firstname}}</a>
+			is {{user.age}} years old
+			<span class="pull-right"><a href="#" ng-click="removeUser(user)">remove</a></span>
+	</li>
+</ul>
+
+<h2>Minors</h2>
+<ul>
+	<li ng-repeat="user in users"
+			ng-hide="user.age > 18">
+		<a ui-sref="user-show({user_id: user.id})">{{user.firstname}}</a>
+		is {{user.age}} years old
+		<span class="pull-right"><a href="#" ng-click="removeUser(user)">remove</a></span>
+
+	</li>
+</ul>
+
+
+<!-- 	<ul>
+	<li ng-repeat="name in names" 
+			ng-show="name.length > 5">
+		{{name}}
+	</li>
+</ul> -->
